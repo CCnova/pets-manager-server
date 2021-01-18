@@ -9,6 +9,8 @@ const petsController = {
   },
 
   post(req, res, next) {
+    const params = req.params;
+    console.log(params);
 
     return res.status(200).send({
       message: 'Post Pets',
