@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const { petsController } = require('../controllers');
 
-router.get('/', (req, res) => {
-  console.log('Get Pets!');
-});
+router.get('/', petsController.get);
+router.post('/', petsController.post);
 
 module.exports = router;
