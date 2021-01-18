@@ -1,0 +1,23 @@
+{
+  "name": "pets-server",
+  "version": "1.0.0",
+  "description": "Server of pets manager",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CCnova/pets-manager-server.git"
+  },
+  "keywords": [
+    "server",
+    "pets"
+  ],
+  "author": "Caio Nova",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CCnova/pets-manager-server/issues"
+  },
+  "homepage": "https://github.com/CCnova/pets-manager-server#readme"
+}
