@@ -3,11 +3,15 @@ const { User } = require('../../database/models');
 
 const userController = {
   async get(req, res) {
-    const users = await User.findAll();
-
-    return res.status(200).send({
-      Users: users,
-    });
+    try {
+      const users = await User.findAll();
+  
+      return res.status(200).send({
+        Users: users,
+      });
+    } catch(error) {
+      throw(error);
+    }
   },
 
   async post(req, res) {
@@ -38,6 +42,33 @@ const userController = {
       throw(error);
     }    
   },
+
+  async put(req, res) {
+    try {
+      const [,[updatedUser]] = await User.update(req.body, {
+        returning: true, where: { id: req.params.id }
+      });
+
+      return res.status(200).send({ User: updatedUser });
+    } catch(error) {
+      throw(error);
+    }
+  },
+
+  async delete(req, res) {
+    try {
+      const deletedUser = await User.destroy({
+        returning: true,
+        where: {
+          id: req.params.id,
+        }
+      });
+
+      res.status(200).send({ User: deletedUser });
+    } catch(error) {
+      throw(error);
+    }
+  }
 };
 
 module.exports = userController;
