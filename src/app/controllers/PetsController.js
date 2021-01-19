@@ -4,11 +4,12 @@ const { Pet } = require('../../database/models');
 const petsController = {
   async get(req, res, next) {
     try {
+      const pets = await Pet.findAll();
 
+      return res.status(200).send({ Pets: pets });
     } catch(error) {
-      
+      throw(error);
     }
-    
   },
 
   async post(req, res, next) {
