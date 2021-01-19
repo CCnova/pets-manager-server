@@ -14,9 +14,23 @@ const userController = {
     }
   },
 
+  async getById(req, res) {
+    try {
+      const user = await User.findOne({
+        where: {
+          id: req.params.id
+        }
+      });
+
+      return res.status(200).send({ User: user });
+    } catch(error) {
+      throw(error);
+    }
+  },
+
   async post(req, res) {
     try {
-      const userAlreadyExists = User.findOne({
+      const userAlreadyExists = await User.findOne({
         where: {
           email: req.body.email,
         }
