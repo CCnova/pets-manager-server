@@ -1,4 +1,4 @@
-const { post } = require("../routes/pets");
+const { post } = require("../../routes/pets");
 
 const petsController = {
   get(req, res, next) {
@@ -9,7 +9,7 @@ const petsController = {
   },
 
   post(req, res, next) {
-    const params = req.params;
+    const params = req.body;
     console.log(params);
 
     return res.status(200).send({
