@@ -1,11 +1,11 @@
-const { post } = require("../../routes/pets");
 const { Pet } = require('../../database/models');
-const { getById } = require("./UserController");
 
 const petsController = {
   async get(req, res) {
     try {
-      const pets = await Pet.findAll();
+      const pets = await Pet.findAll({
+        include: 'User'
+      });
 
       return res.status(200).send({ Pets: pets });
     } catch(error) {
@@ -18,7 +18,8 @@ const petsController = {
       const pet = await Pet.findOne({
         where: {
           id: req.params.id
-        }
+        },
+        include: 'User'
       });
 
       return res.status(200).send({ Pet: pet });
@@ -65,7 +66,7 @@ const petsController = {
     } catch(error) {
       throw(error);
     }
-  }
+  },
 }
 
 module.exports = petsController;

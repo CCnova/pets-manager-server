@@ -1,4 +1,3 @@
-const { post } = require("./PetsController");
 const { User } = require('../../database/models');
 
 const userController = {
