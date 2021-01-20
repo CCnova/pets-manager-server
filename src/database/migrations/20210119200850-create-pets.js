@@ -3,7 +3,7 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = {
-  up: async (queryInterface, Sequelize) => queryInterface.createTable('pets', {
+  up: async (queryInterface, Sequelize) => queryInterface.createTable('Pets', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -17,6 +17,14 @@ module.exports = {
     bread: {
       allowNull: false,
       type: DataTypes.STRING,
+    },
+    userId: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+      references: { 
+        model: 'Users',
+        key: 'id',
+      }
     },
     createdAt: {
       allowNull: false,
@@ -32,5 +40,5 @@ module.exports = {
     }
   }),
 
-  down: async (queryInterface, Sequelize) => queryInterface.dropTable('pets'),
+  down: async (queryInterface, Sequelize) => queryInterface.dropTable('Pets'),
 };
