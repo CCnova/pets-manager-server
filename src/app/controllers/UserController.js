@@ -3,7 +3,7 @@ const { User } = require('../../database/models');
 const userController = {
   async get(req, res) {
     try {
-      const users = await User.findAll();
+      const users = await User.findAll({ include: 'Pets' });
   
       return res.status(200).send({
         Users: users,
@@ -18,7 +18,8 @@ const userController = {
       const user = await User.findOne({
         where: {
           id: req.params.id
-        }
+        },
+        include: 'Pets'
       });
 
       return res.status(200).send({ User: user });
